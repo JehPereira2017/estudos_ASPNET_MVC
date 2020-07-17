@@ -12730,11 +12730,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jessica\\source\\repos\\CadastroCNPJ\\CadastroCNPJ\\CadastroCNPJ.csproj",
+      "projectUniqueName": "C:\\Web_Curso\\estudos_ASPNET_MVC\\CadastroCNPJ\\CadastroCNPJ.csproj",
       "projectName": "CadastroCNPJ",
-      "projectPath": "C:\\Users\\Jessica\\source\\repos\\CadastroCNPJ\\CadastroCNPJ\\CadastroCNPJ.csproj",
+      "projectPath": "C:\\Web_Curso\\estudos_ASPNET_MVC\\CadastroCNPJ\\CadastroCNPJ.csproj",
       "packagesPath": "C:\\Users\\Jessica\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jessica\\source\\repos\\CadastroCNPJ\\CadastroCNPJ\\obj\\",
+      "outputPath": "C:\\Web_Curso\\estudos_ASPNET_MVC\\CadastroCNPJ\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

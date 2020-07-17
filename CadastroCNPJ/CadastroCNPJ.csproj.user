@@ -11,5 +11,6 @@
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_ViewDialogWidth>600</WebStackScaffolding_ViewDialogWidth>
     <WebStackScaffolding_DbContextTypeFullName>CadastroCNPJ.Models.FitcardTesteContext</WebStackScaffolding_DbContextTypeFullName>
+    <NameOfLastUsedPublishProfile>CadastroCNPJASPNET - Web Deploy1</NameOfLastUsedPublishProfile>
   </PropertyGroup>
 </Project>

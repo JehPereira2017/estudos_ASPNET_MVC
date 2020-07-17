@@ -123,7 +123,7 @@ namespace CadastroCNPJ.Controllers
             catch (DbUpdateException ex)
             {
                 //Logar o erro (descomente a variável ex e escreva um log
-                ModelState.AddModelError("", "Não foi possível salvar. " +
+                ModelState.AddModelError(ex.Message, "Não foi possível salvar. " +
                     "Tente novamente, e se o problema persistir " +
                     "chame o suporte.");
             }

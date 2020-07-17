@@ -134,10 +134,10 @@ GO
 CREATE TABLE [dbo].[Estabelecimento](
 	[id_estabelecimento] [int] IDENTITY(1,1) NOT NULL,
 	[razaosocial] [varchar](200) NOT NULL,
-	[nome_fantasia] [varchar](200) NOT NULL,
+	[nome_fantasia] [varchar](200) NULL,
 	[cnpj] [varchar](20) NOT NULL,
-	[email] [varchar](100) NOT NULL,
-	[data_cadastro] [datetime] NOT NULL,
+	[email] [varchar](100)  NULL,
+	[data_cadastro] [datetime] NULL,
 	[logradouro] [varchar](100) NULL,
 	[numero] [varchar](20) NULL,
 	[telefone] [varchar](20) NULL,
@@ -146,7 +146,7 @@ CREATE TABLE [dbo].[Estabelecimento](
 	[agencia] [varchar](20) NULL,
 	[conta] [varchar](20) NULL,
 	[id_categoria] [int] NULL,
-	[status_estabelecimento] [int] NOT NULL,
+	[status_estabelecimento] [int] NULL,
 PRIMARY KEY CLUSTERED 
 (
 	[id_estabelecimento] ASC
