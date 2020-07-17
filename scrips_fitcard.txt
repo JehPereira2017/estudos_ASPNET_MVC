@@ -1,0 +1,175 @@
+USE [FitcardTeste]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Estado](
+	[IdEstado] [int] IDENTITY(1,1) NOT NULL,
+	[Sigla] [nvarchar](2) NULL,
+	[Descricao] [nvarchar](50) NULL,
+ CONSTRAINT [PK_Estado] PRIMARY KEY CLUSTERED 
+(
+	[IdEstado] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Estado]    Script Date: 07/12/2020 13:16:41 ******/
+SET IDENTITY_INSERT [dbo].[Estado] ON
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (1, N'AC', N'Acre')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (2, N'AL', N'Alagoas')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (3, N'AM', N'Amazonas')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (4, N'AP', N'Amapá')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (5, N'BA', N'Bahia')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (6, N'CE', N'Ceará')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (7, N'DF', N'Distrito Federal')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (8, N'ES', N'Espírito Santo')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (9, N'GO', N'Goiás')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (10, N'MA', N'Maranhão')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (11, N'MG', N'Minas Gerais')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (12, N'MS', N'Mato Grosso do Sul')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (13, N'MT', N'Mato Grosso')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (14, N'PA', N'Pará')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (15, N'PB', N'Paraíba')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (16, N'PE', N'Pernambuco')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (17, N'PI', N'Piauí')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (18, N'PR', N'Paraná')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (19, N'RJ', N'Rio de Janeiro')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (20, N'RN', N'Rio Grande do Norte')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (21, N'RO', N'Rondônia')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (22, N'RR', N'Roraima')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (23, N'RS', N'Rio Grande do Sul')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (24, N'SC', N'Santa Catarina')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (25, N'SE', N'Sergipe')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (26, N'SP', N'São Paulo')
+INSERT [dbo].[Estado] ([IdEstado], [Sigla], [Descricao]) VALUES (27, N'TO', N'Tocantins')
+SET IDENTITY_INSERT [dbo].[Estado] OFF
+
+
+
+
+****************************************
+USE [FitcardTeste]
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[Municipio](
+	[IdMunicipio] [int] IDENTITY(1,1) NOT NULL,
+	[CodigoIbge] [nvarchar](7) NULL,
+	[Descricao] [nvarchar](100) NULL,
+	[IdEstado] [int] NULL,
+ CONSTRAINT [PK_Municipio] PRIMARY KEY CLUSTERED 
+(
+	[IdMunicipio] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[Municipio]  WITH CHECK ADD  CONSTRAINT [FK_EstadoMunicipio] FOREIGN KEY([IdEstado])
+REFERENCES [dbo].[Estado] ([IdEstado])
+GO
+
+ALTER TABLE [dbo].[Municipio] CHECK CONSTRAINT [FK_EstadoMunicipio]
+GO
+
+************
+use FitcardTeste
+go
+SET IDENTITY_INSERT [dbo].[Municipio] ON
+INSERT [dbo].[Municipio] ([IdMunicipio], [CodigoIbge], [Descricao], [IdEstado]) VALUES (1, N'123', N'Americana', 26)
+INSERT [dbo].[Municipio] ([IdMunicipio], [CodigoIbge], [Descricao], [IdEstado]) VALUES (2, N'123456', N'Campinas', 26)
+SET IDENTITY_INSERT [dbo].[Municipio] OFF
+
+
+****
+CREATE TABLE [dbo].[Status](
+	[id_status] [int] IDENTITY(1,1) NOT NULL,
+	[descricao_status] [varchar](10) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_status] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+INSERT [dbo].[Status] ([id_status], [descricao_status]) VALUES (1, N'ATIVO')
+INSERT [dbo].[Status] ([id_status], [descricao_status]) VALUES (2, N'INATIVO')
+************
+CREATE TABLE [dbo].[Categoria](
+	[id_categoria] [int] IDENTITY(1,1) NOT NULL,
+	[descricao_categoria] [varchar](20) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_categoria] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+INSERT [dbo].[Categoria] ([id_Categoria], [descricao_Categoria]) VALUES (1, N'SUPERMERCADO')
+INSERT [dbo].[Categoria] ([id_Categoria], [descricao_Categoria]) VALUES (2, N'RESTAURANTE')
+INSERT [dbo].[Categoria] ([id_Categoria], [descricao_Categoria]) VALUES (3, N'BORRACHARIA')
+INSERT [dbo].[Categoria] ([id_Categoria], [descricao_Categoria]) VALUES (4, N'POSTO')
+INSERT [dbo].[Categoria] ([id_Categoria], [descricao_Categoria]) VALUES (5, N'OFICINA')
+********************
+USE [FitcardTeste]
+GO
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+SET ANSI_PADDING ON
+GO
+
+CREATE TABLE [dbo].[Estabelecimento](
+	[id_estabelecimento] [int] IDENTITY(1,1) NOT NULL,
+	[razaosocial] [varchar](200) NOT NULL,
+	[nome_fantasia] [varchar](200) NOT NULL,
+	[cnpj] [varchar](20) NOT NULL,
+	[email] [varchar](100) NOT NULL,
+	[data_cadastro] [datetime] NOT NULL,
+	[logradouro] [varchar](100) NULL,
+	[numero] [varchar](20) NULL,
+	[telefone] [varchar](20) NULL,
+	[id_estado] [int] NULL,
+	[id_cidade] [int] NULL,
+	[agencia] [varchar](20) NULL,
+	[conta] [varchar](20) NULL,
+	[id_categoria] [int] NULL,
+	[status_estabelecimento] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id_estabelecimento] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+SET ANSI_PADDING OFF
+GO
+
+ALTER TABLE [dbo].[Estabelecimento]  WITH CHECK ADD FOREIGN KEY([id_cidade])
+REFERENCES [dbo].[Municipio] ([IdMunicipio])
+GO
+
+ALTER TABLE [dbo].[Estabelecimento]  WITH CHECK ADD FOREIGN KEY([id_estado])
+REFERENCES [dbo].[Estado] ([IdEstado])
+GO
+
+ALTER TABLE [dbo].[Estabelecimento]  WITH CHECK ADD FOREIGN KEY([status_Estabelecimento])
+REFERENCES [dbo].[Status] ([id_status])
+GO
+
+ALTER TABLE [dbo].[Estabelecimento]  WITH CHECK ADD FOREIGN KEY([id_categoria])
+REFERENCES [dbo].[Categoria] ([id_categoria])
+GO

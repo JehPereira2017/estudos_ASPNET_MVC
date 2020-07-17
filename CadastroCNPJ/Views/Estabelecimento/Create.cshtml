@@ -1,0 +1,121 @@
+﻿@model CadastroCNPJ.Models.Estabelecimento
+
+@{
+    ViewData["Title"] = "Incluindo novo estabelecimento";
+}
+
+<h2>Incluindo novo estabelecimento</h2>
+
+<h4>Estabelecimento</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" id="create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Razaosocial" class="control-label"></label>
+                <input asp-for="Razaosocial" class="form-control" />
+                <span asp-validation-for="Razaosocial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NomeFantasia" class="control-label"></label>
+                <input asp-for="NomeFantasia" class="form-control" />
+                <span asp-validation-for="NomeFantasia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cnpj" class="control-label"></label>
+                <input asp-for="Cnpj" class="form-control" id="cnpj" />
+                <span asp-validation-for="Cnpj" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DataCadastro" class="control-label"></label>
+                <input asp-for="DataCadastro" class="form-control" />
+                <span asp-validation-for="DataCadastro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Logradouro" class="control-label"></label>
+                <input asp-for="Logradouro" class="form-control" />
+                <span asp-validation-for="Logradouro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Numero" class="control-label"></label>
+                <input asp-for="Numero" class="form-control" />
+                <span asp-validation-for="Numero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefone" class="control-label"></label>
+                <input asp-for="Telefone" class="form-control" id="telefone" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstado" class="control-label"></label>
+                @Html.DropDownListFor(x => Model.IdEstado, new SelectList(Model.Estados, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Estado" })
+                @Html.ValidationMessageFor(x => x.IdEstado, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCidade" class="control-label"></label>
+                @Html.DropDownListFor(x => Model.IdCidade, new SelectList(Model.Cidades, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Cidade" })
+                @Html.ValidationMessageFor(x => x.IdCidade, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="Agencia" class="control-label"></label>
+                <input asp-for="Agencia" class="form-control" id="agencia" />
+                <span asp-validation-for="Agencia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Conta" class="control-label"></label>
+                <input asp-for="Conta" class="form-control" id="conta" />
+                <span asp-validation-for="Conta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCategoria" class="control-label"></label>
+                @Html.DropDownListFor(x => Model.IdCategoria, new SelectList(Model.Categorias, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Categoria" })
+                @Html.ValidationMessageFor(x => x.IdCategoria, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label asp-for="StatusEstabelecimento" class="control-label"></label>
+                @Html.DropDownListFor(x => Model.StatusEstabelecimento, new SelectList(Model.Status, "Value", "Text"), htmlAttributes: new { @class = "form-control", id = "Status" })
+                @Html.ValidationMessageFor(x => x.StatusEstabelecimento, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <input type="submit" id="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para listagem</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+            $('#Estado').change(function () {
+                var selectedEstado = $("#Estado").val();
+                var munSelect = $('#Cidade');
+                munSelect.empty();
+                if (selectedEstado != null && selectedEstado != '') {
+                    $.getJSON('@Url.Action("GetMunicipios")', { idEstado: selectedEstado }, function (regions) {
+                        if (regions != null && !jQuery.isEmptyObject(regions))
+                        {
+                            munSelect.append($('<option></option>').val(0).html(""));
+                            $.each(regions, function (index, region) {
+                                munSelect.append($('<option></option>').val(region.value).html(region.text));
+                            });
+                        };
+                    });
+                }
+        });
+        $(document).ready(function () {
+            $('#cnpj').inputmask('99.999.999/9999-99');
+            $('#agencia').inputmask('999-9');
+            $('#conta').inputmask('99.999-9');
+        });
+    </script>
+}
