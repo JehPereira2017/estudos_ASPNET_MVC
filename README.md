@@ -2,9 +2,7 @@
 Estudos .net mvc
 
 Olá devs, turo bom?
-Este é meu projeto para o teste, não está bem completo mas garanto que me esforcei e aqui tem o que sei =)
 
-No arquivo scrips_fitcard.txt, tem os dados do banco que eu criei.
 Estados tem todos mas município coloquei só dois para o estado de SP, só pra testar o dropdown list na criação dos dados.
 
 Consegui fazer algumas validações.
