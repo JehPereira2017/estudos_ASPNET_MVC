@@ -1,6 +1,3 @@
-USE [FitcardTeste]
-GO
-
 SET ANSI_NULLS ON
 GO
 
